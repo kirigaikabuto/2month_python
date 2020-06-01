@@ -20,13 +20,23 @@ class Person:
         self.db.save(sql)
 
     def save_person(self):
-        sql=f"insert into {self.table_name} values ('{self.id}','{self.username}','{self.password}')"
-        self.db.save(sql)
+        if self.check_existance() == 0:
+            sql=f"insert into {self.table_name} values ('{self.id}','{self.username}','{self.password}')"
+            self.db.save(sql)
+            print("Пользователь успешно создан")
+        else:
+            print("Пользователь уже существует")
 
+    def check_existance(self):
+        sql = f"select * from {self.table_name} where id='{self.id}'"
+        objects = self.db.select(sql)
+        if len(objects)>0:
+            return 1
+        return 0
     def set_info(self):
         sql=f"select * from {self.table_name} where id='{self.id}'"
-        persons=self.db.select(sql)
-        person = persons[0]
+        persons=self.db.select(sql)#[(1,'usesdsd','sdsdssd')]
+        person = persons[0]#(1,'usesdsd','sdsdssd')
         self.username = person[1]
         self.password = person[2]
 
