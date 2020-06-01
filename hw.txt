@@ -1,0 +1,22 @@
+создать класса Student
+    свойства:(id,username,password,grade,marks)
+    методы:__str__,getClassInfo(),getAvgMark()
+создать класс Grade
+    свойства:(id,name)
+    методы:__str__
+создать класс StudentList:
+    свойства:students
+    методы:__str__,getStudentOfGrade(name_of_grade)
+
+g1 = Grade(1,'11a')
+g2 = Grade(2,'11b')
+st1 = Student(1,'student1','student1',g1,[1,2,3,4,5])
+st2 = Student(2,'student2','student2',g2,[1,2,3,4,5])
+st3 = Student(3,'student3','student3',g1,[1,2,3,4,5])
+st4 = Student(4,'student4','student4',g2,[1,2,3,4,5])
+students=[st1,st2,st3,st4]
+students_list = StudentList(students)
+students_list.getStudentOfGrade("11a")
+---11a---
+id:1,username:student1,avg:3
+id:3,username:student3,avg:3

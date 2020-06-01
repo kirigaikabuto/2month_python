@@ -34,11 +34,14 @@ class Person:
             return 1
         return 0
     def set_info(self):
-        sql=f"select * from {self.table_name} where id='{self.id}'"
-        persons=self.db.select(sql)#[(1,'usesdsd','sdsdssd')]
-        person = persons[0]#(1,'usesdsd','sdsdssd')
-        self.username = person[1]
-        self.password = person[2]
+        if self.check_existance()==1:
+            sql=f"select * from {self.table_name} where id='{self.id}'"
+            persons=self.db.select(sql)#[(1,'usesdsd','sdsdssd')]
+            person = persons[0]#(1,'usesdsd','sdsdssd')
+            self.username = person[1]
+            self.password = person[2]
+        else:
+            print(f"Нет пользователя по id={self.id}")
 
     def get_all_persons(self):
         sql = f"select * from {self.table_name}"
