@@ -23,6 +23,13 @@ class Person:
         sql=f"insert into {self.table_name} values ('{self.id}','{self.username}','{self.password}')"
         self.db.save(sql)
 
+    def set_info(self):
+        sql=f"select * from {self.table_name} where id='{self.id}'"
+        persons=self.db.select(sql)
+        person = persons[0]
+        self.username = person[1]
+        self.password = person[2]
+
     def get_all_persons(self):
         sql = f"select * from {self.table_name}"
         persons = self.db.select(sql)
