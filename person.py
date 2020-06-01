@@ -2,7 +2,7 @@ from db import Database
 
 class Person:
 
-    def __init__(self,id,username,password):
+    def __init__(self,id=0,username="",password=""):
         self.id = id
         self.username = username
         self.password = password
