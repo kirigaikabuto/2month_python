@@ -1,0 +1,4 @@
+python -m venv myvenv
+myvenv\scripts\activate (WINDOWS)
+source myvenv/bin/activate (MAC)
+pip install psycopg2
